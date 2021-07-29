@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:fieldset legend="Cadastro de Mensagem">
+            <h:form>  
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="nome:"></p:outputLabel>    
+                    <p:inputText id="nome" value="#{mensagemBean.mensagem.nome}"></p:inputText>
+                    <p:outputLabel value="e-mail:"></p:outputLabel>    
+                    <p:inputText id="email" value="#{mensagemBean.mensagem.email}"></p:inputText>
+                    <p:commandButton value="enviar" action="#{mensagemBean.cadastrar()}"
+                                     update="@form"></p:commandButton>
+                    <p:commandButton value="listar" action="#{mensagemBean.listar()}" update="@form"></p:commandButton>
+                </p:panelGrid> 
+                <p:dataTable value="#{mensagemBean.listamsg}" var="lista">
+                    <p:column headerText="Codigo" sortBy="">
+                        <h:outputText value="#{lista.codigo}"></h:outputText>   
+                    </p:column>
+                    <p:column headerText="nome" sortBy="#{lista.nome}">
+                        <h:outputText value="#{lista.nome}"></h:outputText>   
+                    </p:column>
+                    <p:column headerText="email">
+                        <h:outputText value="#{lista.email}"></h:outputText>   
+                    </p:column>
+                    <p:column headerText="">
+                        <p:commandButton value="alterar" action="x" update="@form"></p:commandButton>
+                        <p:commandButton value="excluir" action="x"></p:commandButton>
+                    </p:column>    
+                </p:dataTable>
+            </h:form>    
+        </p:fieldset>
+    </h:body>
+</html>
